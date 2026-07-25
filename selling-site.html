@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡ TOP CUT | Professional Barbershop</title>
+    
+    <style>
+        :root {
+            --bg-main: #0e0e10; 
+            --bg-card: #16161a; 
+            --accent: #ffaa00;
+            --text-main: #ffffff; 
+            --text-muted: #a0a0a5; 
+            --success: #00ff66;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: var(--bg-main); 
+            color: var(--text-main); 
+            margin: 0; 
+            padding: 0; 
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(180deg, #1c1c22 0%, var(--bg-main) 100%);
+            padding: 60px 20px 40px; 
+            text-align: center; 
+            border-bottom: 1px solid #222;
+        }
+
+        h1 { 
+            font-size: 3.2rem; 
+            margin: 0; 
+            color: var(--accent); 
+            text-transform: uppercase; 
+            letter-spacing: 3px; 
+            font-weight: 900; 
+        }
+
+        .subtitle { 
+            font-size: 1.1rem; 
+            color: var(--text-muted); 
+            margin-top: 12px; 
+        }
+
+        .container { 
+            max-width: 580px; 
+            margin: 30px auto; 
+            padding: 30px; 
+            background-color: var(--bg-card); 
+            border-radius: 16px; 
+            box-sizing: border-box; 
+        }
+
+        h2 { 
+            font-size: 1.4rem; 
+            color: var(--accent); 
+            margin: 0 0 25px 0; 
+            text-transform: uppercase; 
+            border-left: 4px solid var(--accent); 
+            padding-left: 12px; 
+        }
+
+        .service-list { 
+            display: flex; 
+            flex-direction: column; 
+            gap: 18px; 
+        }
+
+        .service-item { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-end; 
+            font-size: 1.05rem; 
+        }
+
+        .service-name { 
+            position: relative; 
+            background: var(--bg-card); 
+            padding-right: 8px; 
+            z-index: 2; 
+        }
+
+        .service-line { 
+            flex-grow: 1; 
+            border-bottom: 1px dashed #333; 
+            margin-bottom: 5px; 
+            margin-right: 8px; 
+        }
+
+        .price { 
+            color: var(--accent); 
+            font-weight: 700; 
+            white-space: nowrap; 
+            background: var(--bg-card); 
+            padding-left: 8px; 
+            z-index: 2; 
+        }
+
+        .gallery-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 15px; 
+        }
+
+        .gallery-item { 
+            position: relative; 
+            aspect-ratio: 4 / 3; 
+            background-color: #222227; 
+            border-radius: 10px; 
+            overflow: hidden; 
+        }
+
+        .gallery-item img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: cover; 
+        }
+
+        .review-card { 
+            background-color: rgba(255,255,255,0.02); 
+            padding: 20px; 
+            border-radius: 10px; 
+            margin-bottom: 15px; 
+            border: 1px dashed #333; 
+            opacity: 0.85; 
+        }
+
+        .review-header { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-bottom: 10px; 
+        }
+
+        .stars { 
+            color: var(--accent); 
+        }
+
+        .review-text { 
+            color: var(--text-muted); 
+            font-size: 0.95rem; 
+            font-style: italic; 
+        }
+
+        .dropdown-btn { 
+            background-color: var(--accent); 
+            color: #000; 
+            font-size: 1.15rem; 
+            font-weight: 700; 
+            padding: 16px; 
+            border: none; 
+            border-radius: 12px; 
+            cursor: pointer; 
+            width: 100%; 
+            display: flex; 
+            justify-content: center; 
+            gap: 12px; 
+            transition: background 0.2s; 
+        }
+
+        .dropdown-btn:hover { 
+            background-color: #e09500; 
+        }
+
+        .dropdown-content { 
+            max-height: 0; 
+            overflow: hidden; 
+            transition: max-height 0.3s ease-out; 
+            width: 100%; 
+            background-color: #1c1c22; 
+            border-radius: 0 0 12px 12px; 
+        }
+
+        .phone-item { 
+            display: flex; 
+            justify-content: space-between; 
+            padding: 16px 20px; 
+            border-bottom: 1px solid #282830; 
+            cursor: pointer; 
+            transition: background 0.2s; 
+        }
+
+        .phone-item:hover { 
+            background-color: #24242c; 
+        }
+
+        .phone-item:last-child { 
+            border-bottom: none; 
+            border-radius: 0 0 12px 12px; 
+        }
+
+        .phone-action { 
+            font-size: 0.85rem; 
+            color: var(--text-muted); 
+            background-color: rgba(255,255,255,0.05); 
+            padding: 4px 10px; 
+            border-radius: 6px; 
+        }
+
+        .phone-item.copied .phone-action { 
+            color: var(--success); 
+            background-color: rgba(0,255,102,0.1); 
+            font-weight: bold; 
+        }
+
+        .social-grid { 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr); 
+            gap: 15px; 
+            margin-top: 15px; 
+        }
+
+        .social-link { 
+            background-color: rgba(255,255,255,0.02); 
+            color: #fff; 
+            padding: 14px; 
+            border-radius: 12px; 
+            text-decoration: none; 
+            text-align: center; 
+            border: 1px solid #222; 
+            font-weight: 600; 
+            transition: background 0.3s, border-color 0.3s; 
+        }
+
+        .social-link:nth-child(1):hover { 
+            background-color: #24A1DE !important; 
+            border-color: #24A1DE !important; 
+            color: #fff !important; 
+        }
+
+        .social-link:nth-child(2):hover { 
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%) !important; 
+            border-color: #e6683c !important; 
+            color: #fff !important; 
+        }
+
+        .map-wrapper { 
+            width: 100%; 
+            height: 240px; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            border: 1px solid #222; 
+            margin-top: 15px; 
+        }
+
+        .map-wrapper iframe { 
+            width: 100%; 
+            height: 100%; 
+            border: 0; 
+        }
+
+        footer { 
+            background-color: #08080a; 
+            padding: 40px 20px; 
+            margin-top: 60px; 
+            text-align: center; 
+            color: var(--text-muted); 
+            font-size: 0.9rem; 
+            border-top: 1px solid #16161a; 
+        }
+
+        .white { 
+            color: #fff; 
+        }
+
+        @media (max-width: 480px) { 
+            h1 { font-size: 2.5rem; } 
+            .container { padding: 20px; margin: 20px 15px; } 
+            .gallery-grid { grid-template-columns: 1fr; } 
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>TOP CUT</h1>
+        <div class="subtitle">Uslub, sifat va mukammal natija hududi</div>
+    </header>
+
+    <div class="container">
+        <h2>Xizmatlar va narxlar</h2>
+        <div class="service-list">
+            <div class="service-item">
+                <span class="service-name">Erkaklar soch turmagi</span>
+                <span class="service-line"></span>
+                <span class="price">60 000 so'm</span>
+            </div>
+            <div class="service-item">
+                <span class="service-name">Mashinkada qisqartirish</span>
+                <span class="service-line"></span>
+                <span class="price">35 000 so'm</span>
+            </div>
+            <div class="service-item">
+                <span class="service-name">Soqolga shakl berish</span>
+                <span class="service-line"></span>
+                <span class="price">40 000 so'm</span>
+            </div>
+            <div class="service-item">
+                <span class="service-name">Kompleks (Soch + Soqol)</span>
+                <span class="service-line"></span>
+                <span class="price">90 000 so'm</span>
+            </div>
+        </div>
+    </div>
+    <!-- ========================================== -->
+    <!-- ТУТ НАХОДЯТСЯ КАРТИНКИ (ГАЛЕРЕЯ РАБОТ)      -->
+    <!-- Заменяй ссылки в тегах src="" на свои фото -->
+    <!-- ========================================== -->
+    <div class="container">
+        <h2>Ishlarimizdan namunalar</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="/home/_azizbek_/hosting/wallhaven_7pzkqv.jpg" alt="Fade">
+            </div>
+            <div class="gallery-item">
+                <img src="/home/_azizbek_/hosting/wallhaven_zpq67v.jpg" alt="Classic">
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Mijozlar fikri (Google Maps)</h2>
+        <div class="google-reviews-widget">
+            <script src="https://elfsight.com" defer></script>
+            <div class="elfsight-app-YOUR_WIDGET_ID_HERE"></div>
+            
+            <div class="review-card" style="margin-top: 15px;">
+                <div class="review-header">
+                    <span class="white">✨ Real mijoz ismi</span>
+                    <span class="stars">★★★★★</span>
+                </div>
+                <div class="review-text">
+                    "Google Maps platformasidagi eng zo'r va ijobiy fikrlar bu yerda avtomatik yangilanib turadi."
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="background: transparent; box-shadow: none; padding: 0 20px;">
+        <div class="dropdown-wrapper">
+            <button id="dropBtn" class="dropdown-btn" onclick="toggleDropdown()">
+                <span>📱 Navbatga yozilish</span>
+                <span id="arrow">▼</span>
+            </button>
+            <div id="myDropdown" class="dropdown-content">
+                <div class="phone-item" data-phone="+998901234567" onclick="copyNumber(this)">
+                    <span class="phone-label">📞 Administrator</span>
+                    <span class="phone-action">Nusxalash</span>
+                </div>
+                <div class="phone-item" data-phone="+998919876543" onclick="copyNumber(this)">
+                    <span class="phone-label">✂️ Usta (Barber)</span>
+                    <span class="phone-action">Nusxalash</span>
+                </div>
+            </div>
+        </div>
+        <div class="social-grid">
+            <a href="https://t.me" class="social-link" target="_blank">✈️ Telegram</a>
+            <a href="https://instagram.com" class="social-link" target="_blank">📸 Instagram</a>
+        </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- ТУТ НАХОДИТСЯ КАРТА GOOGLE MAPS            -->
+    <!-- Заменяй ссылку в src="" на карту барбера   -->
+    <!-- ========================================== -->
+    <div class="container">
+        <h2>Bizning manzil</h2>
+        <p style="margin: 0 0 12px 0; font-size: 0.95rem; color: var(--text-muted);">
+            📍 Mo'ljal: Markaziy shifoxona ro'parasida, Fergana
+        </p>
+        <div class="map-wrapper">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d1519.391076783371!2d71.7835745543938!3d40.391520546973865!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sru!2s!4v1784880090478!5m2!1sru!2s" loading="lazy"></iframe>
+        </div>
+    </div>
+
+    <footer>
+        <p>⏰ Ish vaqti: <span class="white">09:00 dan 21:00 gacha</span></p>
+        <p>© 2026 TOP CUT Barbershop. Barcha huquqlar himoyalangan.</p>
+    </footer>
+
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById("myDropdown");
+            var arrow = document.getElementById("arrow");
+            
+            if (!dropdown.style.maxHeight || dropdown.style.maxHeight === "0px") {
+                dropdown.style.maxHeight = dropdown.scrollHeight + "px";
+                arrow.textContent = "▲";
+            } else {
+                dropdown.style.maxHeight = "0px";
+                arrow.textContent = "▼";
+            }
+        }
+
+        function copyNumber(element) {
+            var phone = element.getAttribute("data-phone");
+            navigator.clipboard.writeText(phone).then(function() {
+                element.classList.add("copied");
+                var actionSpan = element.querySelector(".phone-action");
+                actionSpan.textContent = "Nusxalandi! ✓";
+                setTimeout(function() {
+                    element.classList.remove("copied");
+                    actionSpan.textContent = "Nusxalash";
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
